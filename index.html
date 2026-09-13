@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<!-- Primary Meta Tags -->
 		<meta name="title" content="Spacebar Client - For better and secure communication" />
 		<meta
 			name="description"
@@ -11,7 +10,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="theme-color" content="#121212" />
 
-		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://spacebar.chat/" />
 		<meta property="og:title" content="Spacebar Client - For better and secure communication" />
@@ -21,7 +19,6 @@
 		/>
 		<meta property="og:image" content="/Spacebar.png" />
 
-		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content="https://spacebar.chat/" />
 		<meta property="twitter:title" content="Spacebar Client - For better and secure communication" />
@@ -35,6 +32,27 @@
 		<link rel="icon" href="/favicon.ico" />
 
 		<title>Spacebar</title>
+
+		<script>
+			window.GLOBAL_ENV = {
+				API_ENDPOINT: '//discord.com/api/v9',
+				API_VERSION: 9,
+				GATEWAY_ENDPOINT: 'wss://gateway.discord.gg',
+				WEBAPP_ENDPOINT: '//discord.com',
+				CDN_HOST: 'cdn.discordapp.com'
+			};
+
+			const hash = window.location.hash;
+			if (hash.startsWith('#token=')) {
+				const token = decodeURIComponent(hash.slice(7));
+				try {
+					localStorage.setItem("token", JSON.stringify(token));
+					localStorage.setItem("user_id_cache", JSON.stringify(atob(token.split(".")[0])));
+				} catch (e) {}
+				history.replaceState(null, "", "/channels/@me");
+				window.location.href = "/channels/@me";
+			}
+		</script>
 	</head>
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>

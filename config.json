@@ -1,0 +1,5 @@
+{
+  "API_ENDPOINT": "https://discord.com/api/v9",
+  "GATEWAY_ENDPOINT": "wss://gateway.discord.gg",
+  "WEBAPP_ENDPOINT": "https://discord.com"
+}
